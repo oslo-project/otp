@@ -1,7 +1,7 @@
 {
 	"name": "@oslojs/otp",
 	"type": "module",
-	"version": "0.1.1",
+	"version": "0.1.0",
 	"description": "One-time passwords with HOTP and TOTP",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
