@@ -1,8 +1,8 @@
 {
 	"name": "@oslojs/otp",
 	"type": "module",
-	"version": "0.1.0",
-	"description": "A runtime-agnostic HOTP and TOTP library",
+	"version": "0.1.1",
+	"description": "One-time passwords with HOTP and TOTP",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"module": "dist/index.js",
@@ -21,6 +21,10 @@
 		"hotp",
 		"totp"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/oslo-project/otp"
+	},
 	"author": "pilcrowOnPaper",
 	"license": "MIT",
 	"devDependencies": {
