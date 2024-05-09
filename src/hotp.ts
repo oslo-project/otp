@@ -33,7 +33,7 @@ export function verifyHOTP(otp: string, key: Uint8Array, counter: bigint, digits
 	}
 	const otpChars = otp.split("");
 	const rawOTP = new Uint8Array(otp.length);
-	// Avoid TextEncoder since utf-8 characters have variable byte size 
+	// Avoid TextEncoder since utf-8 characters have variable byte size
 	for (let i = 0; i < rawOTP.byteLength; i++) {
 		const digit = Number(otpChars[i]);
 		if (!Number.isInteger(digit)) {
