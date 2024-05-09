@@ -1,36 +1,27 @@
-import { generateHOTP } from "./hotp.js";
-import { createTOTPKeyURI } from "./uri.js";
+import { generateHOTP, verifyHOTP } from "./hotp.js";
+import { KeyURI } from "./key-uri.js";
 
-import type { KeyURI } from "./uri.js";
-
-export class TOTPController {
-	public digits: number;
-	public intervalInSeconds: number;
-
-	constructor(options?: { digits?: number; intervalInSeconds?: number }) {
-		const digits = options?.digits ?? 6;
-		if (digits < 6 || digits > 8) {
-			throw new TypeError("Digits must be between 6 and 8");
-		}
-		this.digits = digits;
-		this.intervalInSeconds = options?.intervalInSeconds ?? 30;
+export function generateTOTP(key: Uint8Array, intervalInSeconds: number, digits: number) {
+	if (digits < 6 || digits > 8) {
+		throw new TypeError("Digits must be between 6 and 8");
 	}
+	const counter = BigInt(Math.floor(Date.now() / (intervalInSeconds * 1000)));
+	const hotp = generateHOTP(key, counter, digits);
+	return hotp;
+}
 
-	public generate(secret: Uint8Array): string {
-		const counter = BigInt(Math.floor(Date.now() / (this.intervalInSeconds * 1000)));
-		const hotp = generateHOTP(secret, counter, this.digits);
-		return hotp;
-	}
+export function verifyTOTP(
+	otp: string,
+	key: Uint8Array,
+	intervalInSeconds: number,
+	digits: number
+) {
+	const counter = BigInt(Math.floor(Date.now() / (intervalInSeconds * 1000)));
+	const valid = verifyHOTP(otp, key, counter, digits);
+	return valid;
+}
 
-	public verify(totp: string, secret: Uint8Array): boolean {
-		const expectedTOTP = this.generate(secret);
-		return totp === expectedTOTP;
-	}
-
-	public createKeyURI(issuer: string, accountName: string, secret: Uint8Array): KeyURI {
-		const uri = createTOTPKeyURI(issuer, accountName, secret);
-		uri.setDigits(this.digits);
-		uri.setPeriod(this.intervalInSeconds);
-		return uri;
-	}
+export function createTOTPKeyURI(issuer: string, accountName: string, secret: Uint8Array): KeyURI {
+	const uri = new KeyURI("totp", issuer, accountName, secret);
+	return uri;
 }

@@ -7,15 +7,15 @@ export class KeyURI {
 
 	public params = new URLSearchParams();
 
-	constructor(type: "totp" | "hotp", issuer: string, accountName: string, secret: Uint8Array) {
+	constructor(type: "totp" | "hotp", issuer: string, accountName: string, key: Uint8Array) {
 		this.type = type;
 		this.issuer = issuer;
 		this.accountName = accountName;
 		this.params.set("issuer", issuer);
-		const encodedSecret = base32.encode(secret, {
+		const secret = base32.encode(key, {
 			includePadding: false
 		});
-		this.params.set("secret", encodedSecret);
+		this.params.set("secret", secret);
 	}
 
 	public toString(): string {
@@ -33,27 +33,11 @@ export class KeyURI {
 		this.params.set("algorithm", algorithm);
 	}
 
-	public setCounter(counter: number): void {
+	public setCounter(counter: bigint): void {
 		this.params.set("counter", counter.toString());
 	}
 
-	public setPeriod(period: number): void {
+	public setPeriodInSeconds(period: number): void {
 		this.params.set("period", period.toString());
 	}
-}
-
-export function createHOTPKeyURI(
-	issuer: string,
-	accountName: string,
-	secret: Uint8Array,
-	counter: number
-): KeyURI {
-	const uri = new KeyURI("hotp", issuer, accountName, secret);
-	uri.params.set("counter", counter.toString());
-	return uri;
-}
-
-export function createTOTPKeyURI(issuer: string, accountName: string, secret: Uint8Array): KeyURI {
-	const uri = new KeyURI("totp", issuer, accountName, secret);
-	return uri;
 }

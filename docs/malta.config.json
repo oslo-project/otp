@@ -1,0 +1,28 @@
+{
+	"name": "@oslojs/otp",
+	"description": "One-time passwords with HOTP and TOTP.",
+	"domain": "https://otp.oslojs.dev",
+	"twitter": "@pilcrowonpaper",
+	"sidebar": [
+		{
+			"title": "Examples",
+			"pages": [
+				["HMAC-based one-time passwords", "/examples/hotp"],
+				["Time-based one-time passwords", "/examples/totp"]
+			]
+		},
+		{
+			"title": "API reference",
+			"pages": [["@oslojs/otp", "/reference/main"]]
+		},
+		{
+			"title": "Links",
+			"pages": [
+				["GitHub", "https://github.com/oslo-project/otp"],
+				["Oslo", "https://oslojs.dev"],
+				["Twitter", "https://twitter.com/pilcrowonpaper"],
+				["Donate", "https://github.com/sponsors/pilcrowOnPaper"]
+			]
+		}
+	]
+}
