@@ -13,7 +13,7 @@ Supports HMAC-based one-time passwords (HOTP) and time-based one-time passwords 
 - Fully typed
 
 ```ts
-import { generateTOTP, verifyTOTP } from "@oslojs/oauth2";
+import { generateTOTP, verifyTOTP } from "@oslojs/otp";
 
 const totp = generateTOTP(key, 30, 6);
 const valid = verifyTOTP(totp, key, 30, 6);
