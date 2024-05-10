@@ -38,8 +38,8 @@
 		"vitest": "^0.34.6"
 	},
 	"dependencies": {
-		"@oslojs/binary": "^0.1.1",
-		"@oslojs/crypto": "^0.1.1",
-		"@oslojs/encoding": "^0.1.0"
+		"@oslojs/binary": "0.2.0",
+		"@oslojs/crypto": "0.2.0",
+		"@oslojs/encoding": "0.2.0"
 	}
 }
