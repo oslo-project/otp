@@ -3,6 +3,7 @@
 	"description": "One-time passwords with HOTP and TOTP.",
 	"domain": "https://otp.oslojs.dev",
 	"twitter": "@pilcrowonpaper",
+	"asset_hashing": true,
 	"sidebar": [
 		{
 			"title": "Examples",
