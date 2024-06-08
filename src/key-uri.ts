@@ -12,9 +12,7 @@ export class KeyURI {
 		this.issuer = issuer;
 		this.accountName = accountName;
 		this.params.set("issuer", issuer);
-		const secret = base32.encode(key, {
-			includePadding: false
-		});
+		const secret = base32.encodeNoPadding(key);
 		this.params.set("secret", secret);
 	}
 
