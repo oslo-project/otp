@@ -13,7 +13,7 @@ const digits = 6;
 const intervalInSeconds = 30;
 
 const otp = generateTOTP(key, intervalInSeconds, digits);
-const validOTP = verifyTOTP(otp, secret, intervalInSeconds, digits);
+const validOTP = verifyTOTP(otp, key, intervalInSeconds, digits);
 ```
 
 Use [`createTOTPKeyURI()`](/reference/main/createTOTPKeyURI) to create a key URI, which are then usually encoded into a QR code.
