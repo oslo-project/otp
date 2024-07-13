@@ -2,26 +2,32 @@
 title: "createTOTPKeyURI()"
 ---
 
-Creates a TOTP key URI with the `issuer` and `secret` parameter defined.
+Creates an HOTP key URI with the algorithm parameter set to `SHA1`.
 
 ## Definition
 
 ```ts
-function createTOTPKeyURI(issuer: string, accountName: string, secret: Uint8Array): KeyURI;
+function createTOTPKeyURI(
+	issuer: string,
+	accountName: string,
+	key: Uint8Array,
+	periodInSeconds: number,
+	digits: number
+): string;
 ```
 
 ### Parameters
 
 - `issuer`
 - `accountName`
-- `secret`
+- `key`
+- `periodInSeconds`
+- `digits`
 
 ## Example
 
 ```ts
 import { createTOTPKeyURI } from "@oslojs/otp";
 
-const uri = createTOTPKeyURI("My App", "user@example.com", secret);
-uri.setDigits(6);
-uri.setPeriodInSeconds(30);
+const uri = createTOTPKeyURI("My App", "user@example.com", key, 30, 6);
 ```

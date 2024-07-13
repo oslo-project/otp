@@ -7,11 +7,12 @@ Verifies an HOTP with constant-time comparison.
 ## Definition
 
 ```ts
-function verifyHOTP(otp: string, key: Uint8Array, counter: bigint, digits: number): boolean;
+function verifyHOTP(key: Uint8Array, counter: bigint, digits: number, otp: string): boolean;
 ```
 
 ### Parameters
 
 - `key`: HMAC key
+- `counter`
 - `digits`
-- `intervalInSeconds`
+- `otp`

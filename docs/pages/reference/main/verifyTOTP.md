@@ -8,15 +8,16 @@ Verifies a TOTP with constant-time comparison.
 
 ```ts
 function verifyTOTP(
-	otp: string,
 	key: Uint8Array,
 	intervalInSeconds: number,
-	digits: number
+	digits: number,
+	otp: string
 ): boolean;
 ```
 
 ### Parameters
 
 - `key`: HMAC key
-- `digits`
 - `intervalInSeconds`
+- `digits`
+- `otp`

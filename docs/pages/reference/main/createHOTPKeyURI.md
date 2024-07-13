@@ -2,7 +2,7 @@
 title: "createHOTPKeyURI()"
 ---
 
-Creates an HOTP key URI with the `issuer`, `secret`, and `counter` parameter defined.
+Creates an HOTP key URI with the algorithm parameter set to `SHA1`.
 
 ## Definition
 
@@ -10,23 +10,24 @@ Creates an HOTP key URI with the `issuer`, `secret`, and `counter` parameter def
 function createHOTPKeyURI(
 	issuer: string,
 	accountName: string,
-	secret: Uint8Array,
-	counter: bigint
-): KeyURI;
+	key: Uint8Array,
+	counter: bigint,
+	digits: number
+): string;
 ```
 
 ### Parameters
 
 - `issuer`
-- `accountName`
-- `secret`
+- `key`
+- `key`
 - `counter`
+- `digits`
 
 ## Example
 
 ```ts
 import { createHOTPKeyURI } from "@oslojs/otp";
 
-const uri = createHOTPKeyURI("My App", "user@example.com", secret, counter);
-uri.setDigits(6);
+const uri = createHOTPKeyURI("My App", "user@example.com", key, counter, 6);
 ```

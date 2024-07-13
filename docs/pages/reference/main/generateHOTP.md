@@ -2,7 +2,7 @@
 title: "generateHOTP()"
 ---
 
-Generates a new HOTP.
+Generates a new HOTP with SHA-1.
 
 ## Definition
 

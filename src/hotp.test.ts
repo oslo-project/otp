@@ -17,14 +17,14 @@ test("generateHOTP()", () => {
 });
 
 test("verifyHOTP()", () => {
-	expect(verifyHOTP("173573", secret, 0n, 6)).toBe(true);
-	expect(verifyHOTP("000000", secret, 0n, 6)).toBe(false);
-	expect(verifyHOTP("110880", secret, 10n, 6)).toBe(true);
-	expect(verifyHOTP("000000", secret, 10n, 6)).toBe(false);
-	expect(verifyHOTP("020803", secret, 100n, 6)).toBe(true);
-	expect(verifyHOTP("000000", secret, 100n, 6)).toBe(false);
-	expect(verifyHOTP("115716", secret, 1000n, 6)).toBe(true);
-	expect(verifyHOTP("000000", secret, 1000n, 6)).toBe(false);
+	expect(verifyHOTP(secret, 0n, 6, "173573")).toBe(true);
+	expect(verifyHOTP(secret, 0n, 6, "000000")).toBe(false);
+	expect(verifyHOTP(secret, 10n, 6, "110880")).toBe(true);
+	expect(verifyHOTP(secret, 10n, 6, "000000")).toBe(false);
+	expect(verifyHOTP(secret, 100n, 6, "020803")).toBe(true);
+	expect(verifyHOTP(secret, 100n, 6, "000000")).toBe(false);
+	expect(verifyHOTP(secret, 1000n, 6, "115716")).toBe(true);
+	expect(verifyHOTP(secret, 1000n, 6, "000000")).toBe(false);
 
-	expect(verifyHOTP("173573", secret, 0n, 8)).toBe(false);
+	expect(verifyHOTP(secret, 0n, 8, "173573")).toBe(false);
 });

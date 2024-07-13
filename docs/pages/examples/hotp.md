@@ -13,7 +13,7 @@ const digits = 6;
 let counter = 10n;
 
 const otp = generateHOTP(key, counter, digits);
-const validOTP = verifyOTP(otp, key, counter, digits);
+const validOTP = verifyOTP(key, counter, digits, otp);
 ```
 
 Use [`createHOTPKeyURI()`](/reference/main/createHOTPKeyURI) to create a key URI, which are then usually encoded into a QR code.
@@ -23,6 +23,6 @@ import { createHOTPKeyURI } from "@oslojs/otp";
 
 const issuer = "My app";
 const accountName = "user@example.com";
-const uri = createHOTPKeyURI(issuer, accountName, key, counter);
-uri.setDigits(6);
+const digits = 6;
+const uri = createHOTPKeyURI(issuer, accountName, key, counter, digits);
 ```

@@ -13,7 +13,7 @@ const digits = 6;
 const intervalInSeconds = 30;
 
 const otp = generateTOTP(key, intervalInSeconds, digits);
-const validOTP = verifyTOTP(otp, key, intervalInSeconds, digits);
+const validOTP = verifyTOTP(key, intervalInSeconds, digits, otp);
 ```
 
 Use [`createTOTPKeyURI()`](/reference/main/createTOTPKeyURI) to create a key URI, which are then usually encoded into a QR code.
@@ -23,7 +23,7 @@ import { createTOTPKeyURI } from "@oslojs/otp";
 
 const issuer = "My app";
 const accountName = "user@example.com";
-const uri = createTOTPKeyURI(issuer, accountName, key);
-uri.setDigits(6);
-uri.setPeriodInSeconds(30);
+const intervalInSeconds = 30;
+const digits = 6;
+const uri = createTOTPKeyURI(issuer, accountName, key, intervalInSeconds, digits);
 ```

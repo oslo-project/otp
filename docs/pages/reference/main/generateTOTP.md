@@ -2,7 +2,7 @@
 title: "generateTOTP()"
 ---
 
-Generates a new TOTP.
+Generates a new TOTP with SHA-1.
 
 ## Definition
 

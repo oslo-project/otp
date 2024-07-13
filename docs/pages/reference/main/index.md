@@ -13,6 +13,3 @@ title: "@oslojs/otp"
 - [`verifyHOTP()`](/reference/main/verifyHOTP)
 - [`verifyTOTP()`](/reference/main/verifyTOTP)
 
-## Classes
-
-- [`KeyURI`](/reference/main/KeyURI)
