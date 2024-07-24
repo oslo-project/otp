@@ -14,7 +14,7 @@ export function generateHOTP(key: Uint8Array, counter: bigint, digits: number): 
 	const offset = HS[HS.byteLength - 1] & 0x0f;
 	const truncated = HS.slice(offset, offset + 4);
 	truncated[0] &= 0x7f;
-	const SNum = bigEndian.uint32(truncated);
+	const SNum = bigEndian.uint32(truncated, 0);
 	const D = SNum % 10 ** digits;
 	return D.toString().padStart(digits, "0");
 }
