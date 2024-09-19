@@ -1,7 +1,7 @@
 {
 	"name": "@oslojs/otp",
 	"type": "module",
-	"version": "0.2.2",
+	"version": "1.0.0",
 	"description": "One-time passwords with HOTP and TOTP",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -38,8 +38,8 @@
 		"vitest": "^0.34.6"
 	},
 	"dependencies": {
-		"@oslojs/binary": "0.4.0",
-		"@oslojs/crypto": "0.6.2",
-		"@oslojs/encoding": "0.3.0"
+		"@oslojs/binary": "1.0.0",
+		"@oslojs/crypto": "1.0.0",
+		"@oslojs/encoding": "1.0.0"
 	}
 }

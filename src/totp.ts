@@ -1,4 +1,4 @@
-import { base32 } from "@oslojs/encoding";
+import { encodeBase32NoPadding } from "@oslojs/encoding";
 import { generateHOTP, verifyHOTP } from "./hotp.js";
 
 export function generateTOTP(key: Uint8Array, intervalInSeconds: number, digits: number): string {
@@ -34,7 +34,7 @@ export function createTOTPKeyURI(
 	const params = new URLSearchParams();
 	params.set("issuer", issuer);
 	params.set("algorithm", "SHA1");
-	params.set("secret", base32.encodeNoPadding(key));
+	params.set("secret", encodeBase32NoPadding(key));
 	params.set("period", periodInSeconds.toString());
 	params.set("digits", digits.toString());
 	return base + "?" + params.toString();

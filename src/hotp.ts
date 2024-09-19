@@ -2,7 +2,7 @@ import { bigEndian } from "@oslojs/binary";
 import { hmac } from "@oslojs/crypto/hmac";
 import { SHA1 } from "@oslojs/crypto/sha1";
 import { constantTimeEqual } from "@oslojs/crypto/subtle";
-import { base32 } from "@oslojs/encoding";
+import { encodeBase32NoPadding } from "@oslojs/encoding";
 
 export function generateHOTP(key: Uint8Array, counter: bigint, digits: number): string {
 	if (digits < 6 || digits > 8) {
@@ -46,7 +46,7 @@ export function createHOTPKeyURI(
 	const params = new URLSearchParams();
 	params.set("issuer", issuer);
 	params.set("algorithm", "SHA1");
-	params.set("secret", base32.encodeNoPadding(key));
+	params.set("secret", encodeBase32NoPadding(key));
 	params.set("counter", counter.toString());
 	params.set("digits", digits.toString());
 	return base + "?" + params.toString();
