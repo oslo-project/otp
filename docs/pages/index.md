@@ -16,7 +16,7 @@ Supports HMAC-based one-time passwords (HOTP) and time-based one-time passwords 
 import { generateTOTP, verifyTOTP } from "@oslojs/otp";
 
 const totp = generateTOTP(key, 30, 6);
-const valid = verifyTOTP(totp, key, 30, 6);
+const valid = verifyTOTP(key, 30, 6, totp);
 ```
 
 ## Installation
