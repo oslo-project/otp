@@ -13,7 +13,7 @@ const digits = 6;
 let counter = 10n;
 
 const otp = generateHOTP(key, counter, digits);
-const validOTP = verifyOTP(key, counter, digits, otp);
+const validOTP = verifyHOTP(key, counter, digits, otp);
 ```
 
 Use [`createHOTPKeyURI()`](/reference/main/createHOTPKeyURI) to create a key URI, which are then usually encoded into a QR code.
