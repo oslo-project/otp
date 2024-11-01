@@ -7,7 +7,7 @@ Generates a new TOTP with SHA-1.
 ## Definition
 
 ```ts
-function generateHOTP(key: Uint8Array, intervalInSeconds: number, digits: number): string;
+function generateTOTP(key: Uint8Array, intervalInSeconds: number, digits: number): string;
 ```
 
 ### Parameters
