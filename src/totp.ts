@@ -21,6 +21,46 @@ export function verifyTOTP(
 	return valid;
 }
 
+export function verifyTOTPWithGracePeriod(
+	key: Uint8Array,
+	intervalInSeconds: number,
+	digits: number,
+	otp: string,
+	gracePeriodInSeconds: number
+): boolean {
+	if (gracePeriodInSeconds < 0) {
+		throw new TypeError("Grace period must be a positive number");
+	}
+	if (gracePeriodInSeconds > intervalInSeconds) {
+		throw new TypeError("Grace period must be equal to or smaller than the interval");
+	}
+	const nowUnixMilliseconds = Date.now();
+	const counter = BigInt(Math.floor(nowUnixMilliseconds / (intervalInSeconds * 1000)));
+	const counterBefore = BigInt(
+		Math.floor((nowUnixMilliseconds - gracePeriodInSeconds * 1000) / (intervalInSeconds * 1000))
+	);
+	const counterAfter = BigInt(
+		Math.floor((nowUnixMilliseconds + gracePeriodInSeconds * 1000) / (intervalInSeconds * 1000))
+	);
+	let valid = verifyHOTP(key, counter, digits, otp);
+	if (valid) {
+		return true;
+	}
+	if (counterBefore !== counter) {
+		valid = verifyHOTP(key, counterBefore, digits, otp);
+		if (valid) {
+			return true;
+		}
+	}
+	if (counterAfter !== counter) {
+		valid = verifyHOTP(key, counterAfter, digits, otp);
+		if (valid) {
+			return true;
+		}
+	}
+	return false;
+}
+
 export function createTOTPKeyURI(
 	issuer: string,
 	accountName: string,
