@@ -12,3 +12,4 @@ title: "@oslojs/otp"
 - [`generateTOTP()`](/reference/main/generateTOTP)
 - [`verifyHOTP()`](/reference/main/verifyHOTP)
 - [`verifyTOTP()`](/reference/main/verifyTOTP)
+- [`verifyTOTPWithGracePeriod()`](/reference/main/verifyTOTPWithGracePeriod)
