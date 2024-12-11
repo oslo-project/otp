@@ -36,7 +36,7 @@ export function verifyTOTPWithGracePeriod(
 		Math.floor((nowUnixMilliseconds - gracePeriodInSeconds * 1000) / (intervalInSeconds * 1000))
 	);
 	const maxCounterInclusive = BigInt(
-		Math.floor((nowUnixMilliseconds - gracePeriodInSeconds * 1000) / (intervalInSeconds * 1000))
+		Math.floor((nowUnixMilliseconds + gracePeriodInSeconds * 1000) / (intervalInSeconds * 1000))
 	);
 	while (counter <= maxCounterInclusive) {
 		const valid = verifyHOTP(key, counter, digits, otp);
