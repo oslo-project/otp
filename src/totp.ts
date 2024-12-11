@@ -32,14 +32,18 @@ export function verifyTOTPWithGracePeriod(
 		throw new TypeError("Grace period must be a positive number");
 	}
 	const nowUnixMilliseconds = Date.now();
-	let timeUnixMilliseconds = nowUnixMilliseconds - gracePeriodInSeconds;
-	while (timeUnixMilliseconds <= nowUnixMilliseconds + gracePeriodInSeconds) {
-		const counter = BigInt(Math.floor(timeUnixMilliseconds / (intervalInSeconds * 1000)));
+	let counter = BigInt(
+		Math.floor((nowUnixMilliseconds - gracePeriodInSeconds * 1000) / (intervalInSeconds * 1000))
+	);
+	const maxCounterInclusive = BigInt(
+		Math.floor((nowUnixMilliseconds - gracePeriodInSeconds * 1000) / (intervalInSeconds * 1000))
+	);
+	while (counter <= maxCounterInclusive) {
 		const valid = verifyHOTP(key, counter, digits, otp);
 		if (valid) {
 			return true;
 		}
-		timeUnixMilliseconds += intervalInSeconds * 1000;
+		counter++;
 	}
 	return false;
 }
