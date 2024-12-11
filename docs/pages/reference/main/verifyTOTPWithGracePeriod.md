@@ -10,7 +10,7 @@ function verifyTOTPWithGracePeriod(
 	intervalInSeconds: number,
 	digits: number,
 	otp: string,
-    gracePeriodInSeconds: number
+	gracePeriodInSeconds: number
 ): boolean;
 ```
 
