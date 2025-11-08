@@ -2,7 +2,7 @@
 title: "createTOTPKeyURI()"
 ---
 
-Creates an HOTP key URI with the algorithm parameter set to `SHA1`.
+Creates an TOTP key URI with the algorithm parameter set to `SHA1`.
 
 ## Definition
 
